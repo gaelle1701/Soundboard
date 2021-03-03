@@ -1,0 +1,32 @@
+PLAN SOUNDBOARD:
+
+_créer dossier brief_Soundboard
+	=> créer fichier index.html
+	=> dossier CSS + fichier style.css
+	=> dossier JS + fichier index.js + functions.js
+
+_veille sur Parcel
+	=> installer Parcel
+	=> importer fichier functions.js dans index.js (+ tests)
+	=> npm run dev = relancer le serveur
+
+_faire structure fichier index.html
+	=> lier fichier CSS et JS
+	=> main>section>div*9>.container>button#btnOne
+
+_faire css
+	=> pour dekstop
+	=> responsive = @media screen and (max-width: 570px)
+	=> main / section / container / button / btnActive
+
+_veille sur functions js à utiliser = event.keyCode / keyup-keydown
+	-> touches a = 65 / z = 90 / e = 69 / r = 82 / t = 84 / y = 89/ u = 85 / i = 73 / O = 79
+	-> récupérer les boutons + les sons
+
+	=> créer les fonctions
+		-> 1 pour keydown => ajouter la class + jouer le son
+		-> 1 pour keyup => enlève la class + remet le son au début
+
+	=> pour chaques fonctions voir pour utiliser un tableau avec objet
+		-> pour boucler sur le tableau
+		-> faire une condition if

@@ -1,0 +1,42 @@
+main {
+    background: linear-gradient( #0c497e, #000000);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.btn_section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.container {
+    width: 33%;
+    text-align: center;
+}
+
+button {
+    border-radius: 50%;
+    height: 100px;
+    box-shadow:2px 2px 5px #681579, 6px 6px 5px #FE277E;
+    transition: all ease-in-out;
+    color: #062b4b;
+}
+
+.btn_active {
+    background: linear-gradient(#ff6cbd, #ff00ff);
+    box-shadow: none;
+}
+
+/* *********************************** */
+@media screen and (max-width: 570px) {
+    .container {
+        width: 50%;
+        text-align: center;
+    }
+}
