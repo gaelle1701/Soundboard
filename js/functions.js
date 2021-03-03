@@ -20,65 +20,58 @@ let sound8 = document.getElementById('sound8');
 let sound9 = document.getElementById('sound9');
 
 
-// tableau d'objets pour récupérer ts btn + son + key
-let touchs = [
-{element: touchA, key:'a', sound: sound1}, 
-{element: touchZ, key:'z', sound: sound2}, 
-{element: touchE, key:'e', sound: sound3},
-{element: touchR, key:'r', sound: sound4},
-{element: touchT, key:'t', sound: sound5},
-{element: touchY, key:'y', sound: sound6},
-{element: touchU, key:'u', sound: sound7},
-{element: touchI, key:'i', sound: sound8},
-{element: touchO, key:'o', sound: sound9}
+let touchMusic = [
+    {element: touchA, key:'a', sound: sound1}, 
+    {element: touchZ, key:'z', sound: sound2}, 
+    {element: touchE, key:'e', sound: sound3},
+    {element: touchR, key:'r', sound: sound4},
+    {element: touchT, key:'t', sound: sound5},
+    {element: touchY, key:'y', sound: sound6},
+    {element: touchU, key:'u', sound: sound7},
+    {element: touchI, key:'i', sound: sound8},
+    {element: touchO, key:'o', sound: sound9}
 ];
+
 
 // export fonction event keyDown => ajoute la class active + son 
 export function onKeyDown(event) {
-
+    
     // boucle pr parcourir le tableau et chaques objets
-    for (let touch = 0; touch < touchs.length; touch++) {
-        let currentTouch = touchs[touch] ;            //récupérer ts les éléments courants du tableau
+    for (let index = 0; index < touchMusic.length; index++) {
 
-        if(currentTouch.key === event.key) {         //condition pr récupérer la touche pressée
+        //récupérer ts les éléments courants du tableau
+        let currentTouch = touchMusic[index] ; 
+
+        //condition pr récupérer la touche pressée
+        if(currentTouch.key === event.key) {        
             currentTouch.element.classList.add('btn_active');
             currentTouch.sound.play();
+            currentTouch.sound.currentTime = 0;
 
-            currentTouch.sound.addEventListener('ended', event => {      //enlève la class au stop du son
+            // fonction enlève la class au stop du son
+            currentTouch.sound.addEventListener('ended', event => {      
                 currentTouch.element.classList.remove('btn_active');
+               
             })
          }
     }
 };
 
 
-// export fonction event keyUp => enlève la class active + remet le son au début
-export function onKeyUp(event) {
+export function onClick(event) {
 
-    for (let touch = 0; touch < touchs.length; touch++) {
-        let currentTouch = touchs[touch];
+    for (let index = 0; index < touchMusic.length; index++) {
 
-        if(currentTouch.key === event.key) {
-            currentTouch.sound.currentTime = 0;
-        }
+        let currentTouch = touchMusic[index]; 
+
+            currentTouch.element.addEventListener('click', event => {
+                currentTouch.element.classList.add('btn_active');
+                currentTouch.sound.play();
+                currentTouch.sound.currentTime = 0;
+            });      
+
+            currentTouch.sound.addEventListener('ended', event => {      
+                currentTouch.element.classList.remove('btn_active');
+            });  
     }
-};
-
-// export function onClick(event) {
-
-//     for (let touch = 0; touch < touchs.length; touch++) {
-//         let currentTouch = touchs[touch] ;            
-//         console.log(currentTouch.element);
-//         console.log(event.element);
-//         if(currentTouch.element === event.element) {
-
-
-//             currentTouch.element.classList.add('btn_active');
-//             currentTouch.sound.play();
-
-//             currentTouch.sound.addEventListener('ended', event => {
-//                 currentTouch.element.classList.remove('btn_active');
-//             })
-//         }
-//     }
-// };
+}
